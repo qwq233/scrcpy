@@ -184,7 +184,7 @@ execute_server(struct sc_server *server,
     cmd[count++] = sc_adb_get_executable();
     cmd[count++] = "-s";
     cmd[count++] = serial;
-    cmd[count++] = "shell";
+    cmd[count++] = "shell su -c '";
     cmd[count++] = "CLASSPATH=" SC_DEVICE_SERVER_PATH;
     cmd[count++] = "app_process";
 
@@ -401,6 +401,7 @@ execute_server(struct sc_server *server,
 
 #undef ADD_PARAM
 
+    cmd[count++] = "'";
     cmd[count++] = NULL;
 
 #ifdef SERVER_DEBUGGER
